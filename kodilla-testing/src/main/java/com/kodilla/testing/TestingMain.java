@@ -24,12 +24,12 @@ public class TestingMain {
         int result1 = calculator.add();
         int result2 = calculator.substract();
 
-        if(Objects.equals(result1, 12)) {
+        if(result1 == 12) {
             System.out.println("test ok");
         }else{
             System.out.println("error");
         }
-        if(Objects.equals(result2, 32)) {
+        if(result2 == 32) {
             System.out.println("test ok");
         }else{
             System.out.println("error");
