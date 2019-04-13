@@ -12,9 +12,10 @@ public class ShapeCollector {
     }
     public void addFigure(Shape shape){
     }
-    public void removeFigure(Shape shape){
+    public boolean removeFigure(Shape shape){
+        return true;
     }
-    public void getFigure(int n){
+    public void getFigure(int n) {
     }
     public void showFigures(){
     }
