@@ -2,6 +2,9 @@ package com.kodilla.testing.shape;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -9,17 +12,17 @@ public class ShapeCollectorTestSuite {
 
 
     @Test
-    public void addFigure() {
+    public void testAddFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(6);
+        Shape shape = new Square(4);
         //When
         shapeCollector.addFigure(shape);
         //Then
         assertEquals(1,shapeCollector.getShapeCollection().size());
     }
     @Test
-    public void removeFigure() {
+    public void testRemoveFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         Shape shape = new Square(4);
@@ -31,7 +34,7 @@ public class ShapeCollectorTestSuite {
         assertEquals(0,shapeCollector.getShapeCollection().size());
     }
     @Test
-    public void getFigure() {
+    public void testGetFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         Shape shape = new Square(4);
@@ -42,6 +45,16 @@ public class ShapeCollectorTestSuite {
         assertEquals(shape,shapeResult);
     }
     @Test
-    public void showFigures() {
+    public void testShowFigures() {
+        //Given
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape shape = new Square(4);
+        shapeCollector.addFigure(shape);
+        ArrayList<Shape> shapeList= new ArrayList<>();
+        shapeList.add(shape);
+        //When
+        List<Shape> shapeResultList = shapeCollector.getShapeCollection();
+        //Then
+        assertEquals(shapeList.toString(),shapeResultList.toString());
     }
 }
