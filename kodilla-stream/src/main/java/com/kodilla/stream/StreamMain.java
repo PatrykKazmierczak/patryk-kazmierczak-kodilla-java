@@ -1,7 +1,14 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.beautifier.PoemBeautifier;
+
 public class StreamMain {
     public static void main(String[] args) {
-        System.out.println("Welcome to module 7 - Stream");
+        PoemBeautifier beautify = new PoemBeautifier();
+
+        beautify.beautify("ABC",(s)->s.toUpperCase());
+        beautify.beautify("ABC",(s)->s.toLowerCase());
+        beautify.beautify("ABC",(s)->s.toUpperCase()+" " + "ABC");
+        beautify.beautify("ABC",(s)->s.toLowerCase()+" " + "ABC");
     }
 }
