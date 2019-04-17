@@ -29,20 +29,10 @@ public class BookDirectoryTestSuite {
         resultListOfBooks.add(book4);
         when(libraryDatabaseMock.listBooksWithCondition("Secret"))
                 .thenReturn(resultListOfBooks);
-
         // When
         List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
-
         // Then
         assertEquals(4, theListOfBooks.size());
-    }
-    private List<Book> generateListOfNBooks(int booksQuantity) {
-        List<Book> resultList = new ArrayList<Book>();
-        for (int n = 1; n <= booksQuantity; n++) {
-            Book theBook = new Book("Title " + n, "Author " + n, 1970 + n);
-            resultList.add(theBook);
-        }
-        return resultList;
     }
     @Test
     public void testListBooksWithConditionMoreThan20() {
@@ -58,13 +48,11 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOf0Books);
         when(libraryDatabaseMock.listBooksWithCondition("FortyBooks"))
                 .thenReturn(resultListOf40Books);
-
         // When
         List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition("ZeroBooks");
         List<Book> theListOfBooks15 = bookLibrary.listBooksWithCondition("Any title");
         List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("FortyBooks");
         // Then
-
         assertEquals(0, theListOfBooks0.size());
         assertEquals(15, theListOfBooks15.size());
         assertEquals(0, theListOfBooks40.size());
@@ -121,5 +109,13 @@ public class BookDirectoryTestSuite {
         //Then
         assertEquals(5, resultListBooksInHandsOf.size());
         verify(libraryDatabaseMock, times(1)).listBooksInHandsOf(any(LibraryUser.class));
+    }
+    private List<Book> generateListOfNBooks(int booksQuantity) {
+        List<Book> resultList = new ArrayList<Book>();
+        for (int n = 1; n <= booksQuantity; n++) {
+            Book theBook = new Book("Title " + n, "Author " + n, 1970 + n);
+            resultList.add(theBook);
+        }
+        return resultList;
     }
 }
