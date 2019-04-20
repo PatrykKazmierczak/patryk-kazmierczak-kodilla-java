@@ -10,54 +10,45 @@ import java.util.List;
 public class WorldTestSuite {
     @Test
     public void testGetPeopleQuantity(){
+        //Given
+        Country Spain = new Country("Spain",new BigDecimal("1000001"));
+        Country Poland = new Country("Poland",new BigDecimal("1000001"));
+        Country Germany = new Country("Germany",new BigDecimal("1000001"));
 
-        Country country1 = new Country("Spain",new BigDecimal("7456774738293834"));
-        Country country2 = new Country("Poland",new BigDecimal("577744574738293834"));
-        Country country3 = new Country("Germany",new BigDecimal("733334738293834"));
+        Country China = new Country("China",new BigDecimal("1000001"));
+        Country Japan = new Country("Japan",new BigDecimal("1000001"));
+        Country SouthKorea = new Country("South Korea",new BigDecimal("1000001"));
 
-        Country country4 = new Country("China",new BigDecimal("97456774738293834"));
-        Country country5 = new Country("Japan",new BigDecimal("77445747383834"));
-        Country country6 = new Country("South Korea",new BigDecimal("733334738293834"));
+        Country Chile = new Country("Chile",new BigDecimal("1000001"));
+        Country Brasil = new Country("Brasil",new BigDecimal("1000001"));
+        Country Peru = new Country("Peru",new BigDecimal("1000001"));
 
-        Country country7 = new Country("Chile",new BigDecimal("7456774738293834"));
-        Country country8 = new Country("Brasil",new BigDecimal("377744738293834"));
-        Country country9 = new Country("Peru",new BigDecimal("733334738293834"));
-
-        List<Country> europaList = new ArrayList<>();
-        europaList.add(country1);
-        europaList.add(country2);
-        europaList.add(country3);
-
-        List<Country> asiaList = new ArrayList<>();
-        europaList.add(country4);
-        europaList.add(country5);
-        europaList.add(country6);
-
-        List<Country> southAmericaList = new ArrayList<>();
-        europaList.add(country7);
-        europaList.add(country8);
-        europaList.add(country9);
-
-        Continent europa = new Continent(europaList);
-        Continent asia = new Continent(asiaList);
-        Continent southAmerica = new Continent(southAmericaList);
-
-        List<Continent> worldList = new ArrayList<>();
-        worldList.add(europa);
-        worldList.add(asia);
-        worldList.add(southAmerica);
-
-        World world = new World(worldList);
+        Continent Europa = new Continent();
+        Continent Asia = new Continent();
+        Continent SouthAmerica = new Continent();
 
         //When
-        BigDecimal allPeopleAroundTheWorld = world.getPeopleQuantity();
-        //Given
-        Assert.assertEquals(new BigDecimal("235478564216"), allPeopleAroundTheWorld);
+        Europa.addCountry(Spain);
+        Europa.addCountry(Poland);
+        Europa.addCountry(Germany);
 
+        Asia.addCountry(China);
+        Asia.addCountry(Japan);
+        Asia.addCountry(SouthKorea);
 
+        SouthAmerica.addCountry(Chile);
+        SouthAmerica.addCountry(Brasil);
+        SouthAmerica.addCountry(Peru);
 
+        World World = new World();
+        World.addContinent(Europa);
+        World.addContinent(Asia);
+        World.addContinent(SouthAmerica);
 
+        BigDecimal calculateTotalPeople = World.getPeopleQuantity();
 
-
+        //Then
+        BigDecimal expectedTotalPeople = new BigDecimal("9000009");
+        Assert.assertEquals(expectedTotalPeople,calculateTotalPeople);
     }
 }
