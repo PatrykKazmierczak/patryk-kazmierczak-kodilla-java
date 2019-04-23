@@ -141,22 +141,22 @@ public class BoardTestSuite {
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
 
-        int sumOfDays = project.getTaskLists().stream()
+        int sumOfDays = (int) project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
-                .reduce(0, (sum, current)->sum+=current );
+                .count();
 
-        int tasksQty = project.getTaskLists().stream()
+        int tasksQty = (int) project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
                 .map(t ->1)
-                .reduce(0, (sum, current)->sum+=current );
+                .count();
 
         double average = sumOfDays/tasksQty;
 
         //Then
-        Assert.assertEquals(10.0, average, 0.0001);
+        Assert.assertEquals(1.0, average, 0.0001);
     }
 }
