@@ -3,6 +3,9 @@ package com.kodilla.rps;
 import java.util.Random;
 import java.util.Scanner;
 
+import static com.kodilla.rps.UserSelection.PAPER;
+import static com.kodilla.rps.UserSelection.SCISSORS;
+
 
 public class RpsDialog {
 
@@ -31,11 +34,11 @@ public class RpsDialog {
             String s = scanner.nextLine().toUpperCase();
             switch (s) {
                 case "S":
-                    return UserSelection.SCISSORS;
+                    return SCISSORS;
                 case "R":
                     return UserSelection.ROCK;
                 case "P":
-                    return UserSelection.PAPER;
+                    return PAPER;
                 case "Q":
                     return UserSelection.QUIT;
                 default:
@@ -61,6 +64,7 @@ public class RpsDialog {
         }
     }
 }
+
 
 
 

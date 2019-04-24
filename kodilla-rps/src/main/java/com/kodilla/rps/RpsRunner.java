@@ -1,7 +1,6 @@
 package com.kodilla.rps;
 
 
-import java.sql.SQLOutput;
 
 public class RpsRunner {
 
