@@ -1,12 +1,32 @@
 package com.kodilla.rps;
 
-import java.util.Scanner;
+
+import java.sql.SQLOutput;
 
 public class RpsRunner {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         RpsDialog rpsDialog = new RpsDialog();
-        System.out.println(rpsDialog.getNumberOfRounds());
-        System.out.println(rpsDialog.getUserSelection());
-        System.out.println(rpsDialog.getComputerSelection());
+        System.out.println("New game start");
+        System.out.println(RpsDialog.getNumberOfRounds());
+        System.out.println("User selection: " + RpsDialog.getUserSelection());
+        System.out.println("Computer selection: " + RpsDialog.getComputerSelection());
+        System.out.println("The winner is: " );
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

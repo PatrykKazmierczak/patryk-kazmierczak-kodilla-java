@@ -1,5 +1,5 @@
 package com.kodilla.rps;
 
 public enum UserSelection {
-    SCISSORS, ROCK, PAPIER, QUIT
+    SCISSORS, ROCK, PAPER, QUIT
 }

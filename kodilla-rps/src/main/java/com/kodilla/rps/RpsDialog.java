@@ -3,7 +3,9 @@ package com.kodilla.rps;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class RpsDialog {
+
     public static int getNumberOfRounds() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -21,31 +23,60 @@ public class RpsDialog {
             }
         }
     }
+
     public static UserSelection getUserSelection() {
         Scanner scanner = new Scanner(System.in);
-        while(true){
+        while (true) {
             System.out.println("Enter your move R - rock, S - scissors, P - pacer or Q - quit: ");
             String s = scanner.nextLine().toUpperCase();
-            switch (s){
-                case "S": return UserSelection.SCISSORS;
-                case "R": return UserSelection.ROCK;
-                case "P": return UserSelection.PAPIER;
-                case "Q": return UserSelection.QUIT;
+            switch (s) {
+                case "S":
+                    return UserSelection.SCISSORS;
+                case "R":
+                    return UserSelection.ROCK;
+                case "P":
+                    return UserSelection.PAPER;
+                case "Q":
+                    return UserSelection.QUIT;
                 default:
                     System.out.println("Wrong selection , try again");
             }
         }
     }
+
     public static ComputerSelection getComputerSelection() {
         Random random = new Random();
-        int com = random.nextInt(4);
-        while(true){
-            switch (com){
-                case 0: return ComputerSelection.SCISSORS;
-                case 1: return ComputerSelection.ROCK;
-                case 2: return ComputerSelection.PAPIER;
-                default:break;
+        int com = random.nextInt(3);
+        while (true) {
+            switch (com) {
+                case 0:
+                    return ComputerSelection.SCISSORS;
+                case 1:
+                    return ComputerSelection.ROCK;
+                case 2:
+                    return ComputerSelection.PAPER;
+                default:
+                    break;
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
