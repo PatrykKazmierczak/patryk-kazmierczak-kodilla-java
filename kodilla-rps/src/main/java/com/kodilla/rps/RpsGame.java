@@ -3,18 +3,21 @@ package com.kodilla.rps;
 
 import java.util.Scanner;
 
-import static com.kodilla.rps.UserSelection.*;
+import static com.kodilla.rps.ComputerSelection.ROCK;
+import static com.kodilla.rps.UserSelection.PAPER;
+import static com.kodilla.rps.UserSelection.SCISSORS;
 import static com.kodilla.rps.Winner.*;
 
 public class RpsGame {
 
-
+    private Winner selectWinner;
+    private int computerScore;
+    private int humanScore;
     private UserSelection computerSelection;
     private UserSelection userSelection;
-    private int computerScore = 0;
-    private int humanScore = 0;
 
-    public Winner playGame() {
+
+    public int playGame() {
 
         System.out.println("Welcome in the game");
         System.out.println("Enter number of games to win");
@@ -41,6 +44,9 @@ public class RpsGame {
             computerScore++;
             humanScore++;
         }
+        return winsToEnd;
+    }
+
     private Winner selectWinner(UserSelection computerSelection, UserSelection userSelection) {
         if (userSelection == ROCK) {
             if (computerSelection == PAPER) {
@@ -69,10 +75,15 @@ public class RpsGame {
                 }
             }
         }
-        return null;
-        }
     }
 }
+
+
+
+
+
+
+
 
 
 

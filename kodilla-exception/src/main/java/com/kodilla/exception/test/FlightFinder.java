@@ -24,9 +24,9 @@ public class FlightFinder {
     public static void main(String[] args) {
 
         FlightFinder flightFinder = new FlightFinder();
-        Flight WAW_NY = new Flight("Warsaw", "New York");
+        Flight WAW_HND = new Flight("Warsaw", "Tokyo");
         try {
-            flightFinder.findFlight(WAW_NY);
+            flightFinder.findFlight(WAW_HND);
 
         } catch (RouteNotFoundException e) {
             System.out.println("We are so sorry, flight to this airport is not possible");
