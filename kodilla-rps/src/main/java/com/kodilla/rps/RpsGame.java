@@ -33,7 +33,7 @@ public class RpsGame {
         System.out.println("User selection: " + RpsDialog.getUserSelection());
         System.out.println("Computer selection: " + RpsDialog.getComputerSelection());
         System.out.println("The winner is: ");
-        System.out.println(RpsDialog.getSecondMenu());
+
 
         Winner winner = selectWinner(computerSelection, userSelection);
         if (winner == COMPUTER) {
@@ -49,34 +49,46 @@ public class RpsGame {
 
     private Winner selectWinner(UserSelection computerSelection, UserSelection userSelection) {
         if (userSelection == ROCK) {
-            if (computerSelection == PAPER) {
-                return COMPUTER;
-            } else if (computerSelection == SCISSORS) {
-                return HUMAN;
-            } else {
-                return BOTH;
-
-            } else if (userSelection == PAPER) {
-                if (computerSelection == SCISSORS) {
-                    return COMPUTER;
-                } else if (computerSelection == ROCK) {
-                    return HUMAN;
-                } else {
-                    return BOTH;
-
-                } else if (userSelection == SCISSORS) {
-                    if (computerSelection == ROCK) {
-                        return COMPUTER;
-                    } else if (computerSelection == PAPER) {
-                        return HUMAN;
-                    } else {
-                        return BOTH;
-                    }
-                }
+            return computeWinnerWhenUserRock(computerSelection);
+        } else if (userSelection == PAPER) {
+            return computeWinnerWhenUserPaper(computerSelection);
+        } else {
+            return computeWinnerWhenUserScissors(computerSelection);
             }
+        }
+    private Winner computeWinnerWhenUserRock ( UserSelection computerSelection){
+        if (computerSelection == PAPER) {
+            return COMPUTER;
+        } else if (computerSelection == SCISSORS) {
+            return HUMAN;
+        } else {
+            return BOTH;
+        }
+    }
+    private Winner computeWinnerWhenUserPaper ( UserSelection computerSelection){
+        if (computerSelection == SCISSORS) {
+            return COMPUTER;
+        } else if (computerSelection == ROCK) {
+            return HUMAN;
+        } else {
+            return BOTH;
+        }
+    }
+    private Winner computeWinnerWhenUserScissors ( UserSelection computerSelection){
+        if (computerSelection == ROCK) {
+            return COMPUTER;
+        } else if (computerSelection == PAPER) {
+            return HUMAN;
+        } else {
+            return BOTH;
         }
     }
 }
+
+
+
+
+
 
 
 
