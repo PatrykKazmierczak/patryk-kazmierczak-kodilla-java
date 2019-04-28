@@ -1,10 +1,47 @@
 package com.kodilla.rps;
 
+
+import java.util.Scanner;
+
 import static com.kodilla.rps.UserSelection.*;
 import static com.kodilla.rps.Winner.*;
 
 public class RpsGame {
-    public Winner selectWinner(UserSelection computerSelection, UserSelection userSelection) {
+
+
+    private UserSelection computerSelection;
+    private UserSelection userSelection;
+    private int computerScore = 0;
+    private int humanScore = 0;
+
+    public Winner playGame() {
+
+        System.out.println("Welcome in the game");
+        System.out.println("Enter number of games to win");
+        Scanner scanner1 = new Scanner(System.in);
+        int winsToEnd = scanner1.nextInt();
+
+        System.out.println("Enter name of the player");
+        Scanner scanner2 = new Scanner(System.in);
+        String playerName = scanner2.nextLine();
+
+        System.out.println("New game start");
+        System.out.println(RpsDialog.getNumberOfRounds());
+        System.out.println("User selection: " + RpsDialog.getUserSelection());
+        System.out.println("Computer selection: " + RpsDialog.getComputerSelection());
+        System.out.println("The winner is: ");
+        System.out.println(RpsDialog.getSecondMenu());
+
+        Winner winner = selectWinner(computerSelection, userSelection);
+        if (winner == COMPUTER) {
+            computerScore++;
+        } else if (winner == HUMAN) {
+            humanScore++;
+        } else {
+            computerScore++;
+            humanScore++;
+        }
+    private Winner selectWinner(UserSelection computerSelection, UserSelection userSelection) {
         if (userSelection == ROCK) {
             if (computerSelection == PAPER) {
                 return COMPUTER;
@@ -33,15 +70,17 @@ public class RpsGame {
             }
         }
         return null;
+        }
     }
+}
 
-        Winner winner = selectWinner(computerSelection, userSelection);
-            if (winner == COMPUTER) {
-                computerScore++;
-            } else if (winner == HUMAN) {
-                 humanScore++;
-            } else {
-                 computerScore++;
-                 humandScore++;
-            }
-    }
+
+
+
+
+
+
+
+
+
+

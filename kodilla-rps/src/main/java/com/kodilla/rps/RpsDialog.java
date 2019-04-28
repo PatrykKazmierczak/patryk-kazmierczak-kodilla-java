@@ -43,6 +43,7 @@ public class RpsDialog {
             }
         }
     }
+
     public static ComputerSelection getComputerSelection() {
         Random random = new Random();
         int com = random.nextInt(3);
@@ -59,7 +60,29 @@ public class RpsDialog {
             }
         }
     }
+
+    public static int getSecondMenu() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.println("Choose one of the option: N - restart game, X - to end game");
+                String s = scanner.nextLine().toUpperCase();
+                switch (s) {
+                    case "N":
+                        return new RpsGame().playGame();
+                    case "X":
+                        return Integer.parseInt("The game has been ended");
+                    default:
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("The game has been ended");
+            }
+        }
+    }
 }
+
+
 
 
 
