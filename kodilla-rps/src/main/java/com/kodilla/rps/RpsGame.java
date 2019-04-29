@@ -1,62 +1,59 @@
 package com.kodilla.rps;
 
-
-import java.util.Scanner;
-
-import static com.kodilla.rps.ComputerSelection.ROCK;
-import static com.kodilla.rps.UserSelection.PAPER;
-import static com.kodilla.rps.UserSelection.SCISSORS;
+import static com.kodilla.rps.UserSelection.*;
 import static com.kodilla.rps.Winner.*;
 
 public class RpsGame {
 
-    private Winner selectWinner;
-    private int computerScore;
-    private int humanScore;
+    private int computerScore = 0;
+    private int humanScore = 0;
     private UserSelection computerSelection;
     private UserSelection userSelection;
+    private String userName;
+    private int rounds;
+    private int round = 1;
 
-
-    public int playGame() {
-
-        System.out.println("Welcome in the game");
-        System.out.println("Enter number of games to win");
-        Scanner scanner1 = new Scanner(System.in);
-        int winsToEnd = scanner1.nextInt();
-
-        System.out.println("Enter name of the player");
-        Scanner scanner2 = new Scanner(System.in);
-        String playerName = scanner2.nextLine();
-
-        System.out.println("New game start");
-        System.out.println(RpsDialog.getNumberOfRounds());
-        System.out.println("User selection: " + RpsDialog.getUserSelection());
-        System.out.println("Computer selection: " + RpsDialog.getComputerSelection());
-        System.out.println("The winner is: ");
-
-
-        Winner winner = selectWinner(computerSelection, userSelection);
-        if (winner == COMPUTER) {
-            computerScore++;
-        } else if (winner == HUMAN) {
-            humanScore++;
-        } else {
-            computerScore++;
-            humanScore++;
+    public void playGame() {
+        rounds = RpsDialog.getRounds();
+        userName = RpsDialog.getUserName();
+        while (round <= rounds) {
+            userSelection = RpsDialog.getUserSelection();
+            if(userSelection == QUIT) return;
+            if(userSelection == RESTART){
+                restart();
+            } else {
+                computerSelection = RpsDialog.getComputerSelection();
+                Winner winner = selectWinner(computerSelection, userSelection);
+                if (winner == COMPUTER) {
+                    computerScore++;
+                } else if (winner == HUMAN) {
+                    humanScore++;
+                } else {
+                    computerScore++;
+                    humanScore++;
+                }
+                RpsDialog.showStatistics(
+                        rounds, userSelection, computerSelection, winner, round, computerScore, humanScore);
+                round++;
+            }
         }
-        return winsToEnd;
+        //Tu wyświetlić wyniki końcowe
     }
-
-    private Winner selectWinner(UserSelection computerSelection, UserSelection userSelection) {
+    private void restart() {
+        humanScore = 0;
+        computerScore = 0;
+        RpsDialog.showRestartInfo();
+    }
+    private Winner selectWinner(UserSelection userSelection, UserSelection computerSelection) {
         if (userSelection == ROCK) {
             return computeWinnerWhenUserRock(computerSelection);
         } else if (userSelection == PAPER) {
             return computeWinnerWhenUserPaper(computerSelection);
         } else {
             return computeWinnerWhenUserScissors(computerSelection);
-            }
         }
-    private Winner computeWinnerWhenUserRock ( UserSelection computerSelection){
+    }
+    private Winner computeWinnerWhenUserRock(UserSelection computerSelection) {
         if (computerSelection == PAPER) {
             return COMPUTER;
         } else if (computerSelection == SCISSORS) {
@@ -65,7 +62,7 @@ public class RpsGame {
             return BOTH;
         }
     }
-    private Winner computeWinnerWhenUserPaper ( UserSelection computerSelection){
+    private Winner computeWinnerWhenUserPaper(UserSelection computerSelection) {
         if (computerSelection == SCISSORS) {
             return COMPUTER;
         } else if (computerSelection == ROCK) {
@@ -74,7 +71,8 @@ public class RpsGame {
             return BOTH;
         }
     }
-    private Winner computeWinnerWhenUserScissors ( UserSelection computerSelection){
+
+    private Winner computeWinnerWhenUserScissors(UserSelection computerSelection) {
         if (computerSelection == ROCK) {
             return COMPUTER;
         } else if (computerSelection == PAPER) {
