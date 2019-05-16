@@ -6,6 +6,7 @@ public class RpsRunner {
 
         RpsGame rpsGame = new RpsGame();
         rpsGame.playGame();
+        rpsGame.selectWinnerOfGame();
     }
 }
 

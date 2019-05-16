@@ -1,5 +1,7 @@
 package com.kodilla.rps;
 
+import java.sql.SQLOutput;
+
 import static com.kodilla.rps.UserSelection.*;
 import static com.kodilla.rps.Winner.*;
 
@@ -37,7 +39,15 @@ public class RpsGame {
                 round++;
             }
         }
-        //Tu wyświetlić wyniki końcowe
+    }
+    public void selectWinnerOfGame() {
+        int humanWins = humanScore++;
+        int computerWins = computerScore++;
+        if(humanWins<computerWins) {
+            System.out.println("Computer win the game");
+        } else {
+            System.out.println("Human win the game");
+        }
     }
     private void restart() {
         humanScore = 0;
