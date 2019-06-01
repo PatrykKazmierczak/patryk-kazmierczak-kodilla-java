@@ -8,11 +8,9 @@ public class OrderDto {
         this.user = user;
         this.isOrdered = isOrdered;
     }
-
     public User getUser() {
         return user;
     }
-
     public boolean isOrdered() {
         return isOrdered;
     }

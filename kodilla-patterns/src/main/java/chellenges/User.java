@@ -16,27 +16,21 @@ public class User {
         this.userAge = userAge;
         this.userPhoneNumber = userPhoneNumber;
     }
-
     public String getUserName() {
         return userName;
     }
-
     public String getUserSurname() {
         return userSurname;
     }
-
     public String getUserAdress() {
         return userAdress;
     }
-
     public String getUserMailAdress() {
         return userMailAdress;
     }
-
     public int getUserAge() {
         return userAge;
     }
-
     public int getUserPhoneNumber() {
         return userPhoneNumber;
     }

@@ -8,11 +8,9 @@ public class OrderRequest {
         this.user = user;
         this.item = item;
     }
-
     public User getUser() {
         return user;
     }
-
     public Item getItem() {
         return item;
     }
