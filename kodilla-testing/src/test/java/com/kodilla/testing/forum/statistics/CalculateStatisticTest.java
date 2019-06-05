@@ -27,7 +27,7 @@ public class CalculateStatisticTest {
         //Given
         when(statisticsMock.postsCount()).thenReturn(0);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(0,calculateStatistic.getPostQuantity());
         assertEquals(0,calculateStatistic.getAveragePostPerUser(),0.01);
@@ -46,7 +46,7 @@ public class CalculateStatisticTest {
         //Given
         when(statisticsMock.postsCount()).thenReturn(1000);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(1000,calculateStatistic.getPostQuantity());
         assertEquals(500,calculateStatistic.getAveragePostPerUser(),0.01);
@@ -65,7 +65,7 @@ public class CalculateStatisticTest {
         //Given
         when(statisticsMock.commentsCount()).thenReturn(0);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(0,calculateStatistic.getCommentsQuantity());
         assertEquals(0,calculateStatistic.getAverageCommentsPerUser(),0.01);
@@ -85,7 +85,7 @@ public class CalculateStatisticTest {
         when(statisticsMock.commentsCount()).thenReturn(4);
         when(statisticsMock.postsCount()).thenReturn(16);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(16,calculateStatistic.getPostQuantity());
         assertEquals(4,calculateStatistic.getCommentsQuantity());
@@ -107,7 +107,7 @@ public class CalculateStatisticTest {
         when(statisticsMock.commentsCount()).thenReturn(24);
         when(statisticsMock.postsCount()).thenReturn(4);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(24,calculateStatistic.getCommentsQuantity());
         assertEquals(4,calculateStatistic.getPostQuantity());
@@ -123,7 +123,7 @@ public class CalculateStatisticTest {
         //Given
         when(statisticsMock.usersNames()).thenReturn(usersList);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(0,calculateStatistic.getUserQuantity());
         assertEquals(0,calculateStatistic.getAveragePostPerUser(),0.01);
@@ -143,7 +143,7 @@ public class CalculateStatisticTest {
         //Given
         when(statisticsMock.usersNames()).thenReturn(usersList);
         //When
-        calculateStatistic.calculateAdvStatistics(statisticsMock);
+        CalculateStatistic.calculateAdvStatistics (statisticsMock);
         //Then
         assertEquals(1000,calculateStatistic.getUserQuantity());
         assertEquals(0.02,calculateStatistic.getAveragePostPerUser(),0.01);

@@ -10,4 +10,6 @@ include 'kodilla-exception'
 include 'kodilla-rps2'
 include 'patterns'
 include 'kodilla-patterns'
+include 'kodilla-spring-intro'
+include 'kodilla-spring'
 
