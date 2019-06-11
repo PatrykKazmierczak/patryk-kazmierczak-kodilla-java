@@ -6,10 +6,11 @@ public class FlightSystemMain {
         WelcomeScreen welcomeScreen = new WelcomeScreen();
         welcomeScreen.welcomeScreen();
 
-        flightsSearch.flightsSearch ();
         flightsSearch.findFlightFrom("Kraków");
         System.out.println ();
         flightsSearch.findFlightsTo("Łódź");
+        System.out.println ();
+        flightsSearch.findFlightsVia ("Warszawa","Łódź","Wrocław");
 
     }
 }
